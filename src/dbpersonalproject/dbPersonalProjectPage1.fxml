@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.effect.ColorInput?>
+<?import javafx.scene.effect.Reflection?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.shape.Sphere?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<!-- 9 Novemeber 2018 @Author Marion Armbruster
+The fxml that forms the first scene in the stage. It is a part of the View in the MVC Pattern. It
+  includes the design and formatting of the scene.-->
+
+<GridPane alignment="center" hgap="10" vgap="10" xmlns="http://javafx.com/javafx/8.0.171"
+  xmlns:fx="http://javafx.com/fxml/1" fx:controller="dbpersonalproject.dBProjectController1">
+  <BorderPane prefHeight="200.0" prefWidth="200.0">
+    <top>
+      <AnchorPane prefHeight="400.0" prefWidth="725.0" style="-fx-background-color: #03A89E;"
+        BorderPane.alignment="CENTER">
+        <children>
+          <Pane prefHeight="400.0" prefWidth="162.0" style="-fx-background-color: #C0C0C0;">
+            <children>
+              <VBox layoutX="33.0" prefHeight="400.0" prefWidth="97.0">
+                <children>
+                  <Button fx:id="connect" alignment="CENTER" maxHeight="-Infinity"
+                    maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#goToNext"
+                    prefHeight="58.0" prefWidth="97.0" text="Make Connection" textAlignment="CENTER"
+                    wrapText="true">
+                    <font>
+                      <Font size="15.0"/>
+                    </font>
+                    <VBox.margin>
+                      <Insets bottom="30.0" top="50.0"/>
+                    </VBox.margin>
+                  </Button>
+                </children>
+              </VBox>
+            </children>
+          </Pane>
+          <Text layoutX="378.0" layoutY="63.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Welcome"
+            textAlignment="CENTER" wrappingWidth="141.1761474609375"
+            AnchorPane.bottomAnchor="327.89453125" AnchorPane.leftAnchor="377.1761474609375"
+            AnchorPane.rightAnchor="205.8238525390625" AnchorPane.topAnchor="33.98828125">
+            <font>
+              <Font name="Lucida Calligraphy Italic" size="28.0"/>
+            </font>
+          </Text>
+          <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="349.0" layoutY="125.0"
+            preserveRatio="true" AnchorPane.bottomAnchor="125.0" AnchorPane.leftAnchor="349.0"
+            AnchorPane.rightAnchor="176.0" AnchorPane.topAnchor="125.0">
+            <image>
+              <Image url="@welcomePicture.jpg"/>
+            </image>
+            <effect>
+              <Reflection/>
+            </effect>
+          </ImageView>
+          <AnchorPane layoutX="658.0" prefHeight="55.0" prefWidth="67.0">
+            <children>
+              <Sphere fx:id="logOff" layoutX="48.0" layoutY="18.0" onMouseReleased="#closeWindow"
+                radius="10.0" AnchorPane.bottomAnchor="27.0" AnchorPane.leftAnchor="38.0"
+                AnchorPane.rightAnchor="9.0" AnchorPane.topAnchor="8.0">
+                <effect>
+                  <ColorInput paint="#21cc76"/>
+                </effect>
+              </Sphere>
+            </children>
+          </AnchorPane>
+        </children>
+      </AnchorPane>
+    </top>
+  </BorderPane>
+  <columnConstraints>
+    <ColumnConstraints/>
+  </columnConstraints>
+  <rowConstraints>
+    <RowConstraints/>
+  </rowConstraints>
+</GridPane>

@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.SplitPane?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.effect.DropShadow?>
+<?import javafx.scene.effect.InnerShadow?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.text.Font?>
+
+<!-- September Fall 2018 @Author Marion Armbruster
+A gui screen that was used as a mockup and experiment for this program while it was in its
+    planning and design phases. -->
+
+<GridPane alignment="center" hgap="10" vgap="10" xmlns="http://javafx.com/javafx/8.0.171"
+  xmlns:fx="http://javafx.com/fxml/1" fx:controller="dbpersonalproject.dBProjectController2">
+
+  <columnConstraints>
+    <ColumnConstraints/>
+  </columnConstraints>
+  <rowConstraints>
+    <RowConstraints/>
+  </rowConstraints>
+  <children>
+    <BorderPane prefHeight="525.0" prefWidth="661.0">
+      <center>
+        <SplitPane dividerPositions="0.19726858877086495" prefHeight="160.0" prefWidth="200.0"
+          BorderPane.alignment="CENTER">
+          <items>
+            <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0"
+              style="-fx-background-color: A5DFEF;">
+              <children>
+                <Button fx:id="searchDbButton" accessibleRole="TOGGLE_BUTTON" layoutX="34.0"
+                  layoutY="223.0" mnemonicParsing="false" onAction="#goToSearch" prefHeight="39.0"
+                  prefWidth="60.0" style="-fx-background-color: B0C4DE;" text="Search"
+                  textAlignment="CENTER">
+                  <effect>
+                    <DropShadow/>
+                  </effect>
+                </Button>
+              </children>
+            </AnchorPane>
+            <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="523.0" prefWidth="541.0"
+              style="-fx-background-color: BBFFFF;">
+              <children>
+                <ImageView fitHeight="194.0" fitWidth="228.0" layoutX="116.0" layoutY="153.0"
+                  pickOnBounds="true" preserveRatio="true">
+                  <image>
+                    <Image url="@picForDatabaseProject.jpg"/>
+                  </image>
+                </ImageView>
+                <TextField alignment="CENTER" editable="false" layoutX="104.0" layoutY="24.0"
+                  prefHeight="107.0" prefWidth="270.0" style="-fx-font-family: Forte;" text="Welcome">
+                  <effect>
+                    <InnerShadow/>
+                  </effect>
+                  <font>
+                    <Font name="Forte" size="30.0"/>
+                  </font>
+                </TextField>
+                <Button accessibleRole="TOGGLE_BUTTON" alignment="CENTER" layoutX="79.0"
+                  layoutY="389.0" mnemonicParsing="false" prefHeight="55.0" prefWidth="60.0"
+                  style="-fx-background-color: B0C4DE;" text="In Event" textAlignment="CENTER"
+                  wrapText="true">
+                  <effect>
+                    <DropShadow/>
+                  </effect>
+                </Button>
+                <Button accessibleRole="TOGGLE_BUTTON" alignment="CENTER" layoutX="314.0"
+                  layoutY="389.0" mnemonicParsing="false" prefHeight="55.0" prefWidth="60.0"
+                  style="-fx-background-color: B0C4DE;" text="Out Event" textAlignment="CENTER"
+                  wrapText="true">
+                  <effect>
+                    <DropShadow/>
+                  </effect>
+                </Button>
+              </children>
+            </AnchorPane>
+          </items>
+        </SplitPane>
+      </center>
+    </BorderPane>
+  </children>
+</GridPane>

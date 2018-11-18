@@ -1,0 +1,155 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.effect.ColorInput?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.shape.Sphere?>
+<?import javafx.scene.text.Font?>
+
+<!-- 5 Novemeber 2018 @Author Marion Armbruster
+The fxml that forms the third scene in the stage. It is a part of the View in the MVC Pattern. It
+  includes the design and formatting of the scene.-->
+
+<GridPane alignment="center" hgap="10" vgap="10" xmlns="http://javafx.com/javafx/8.0.171"
+  xmlns:fx="http://javafx.com/fxml/1" fx:controller="dbpersonalproject.dbProjectController3">
+  <BorderPane prefHeight="200.0" prefWidth="200.0">
+    <right>
+      <AnchorPane prefHeight="400.0" prefWidth="725.0" style="-fx-background-color: #03A89E;"
+        BorderPane.alignment="CENTER">
+        <children>
+          <Pane prefHeight="400.0" prefWidth="162.0" style="-fx-background-color: #C0C0C0;">
+            <children>
+              <VBox layoutX="33.0" prefHeight="400.0" prefWidth="97.0">
+                <children>
+                  <Button fx:id="home" alignment="CENTER" maxHeight="-Infinity"
+                    maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#goToHome"
+                    prefHeight="40.0" text="Go Back"
+                    textAlignment="CENTER">
+                    <font>
+                      <Font size="15.0"/>
+                    </font>
+                    <VBox.margin>
+                      <Insets bottom="30.0" top="50.0"/>
+                    </VBox.margin>
+                  </Button>
+                </children>
+              </VBox>
+            </children>
+          </Pane>
+          <Label layoutX="162.0" layoutY="-2.0" text="Search Database:" textAlignment="CENTER">
+            <font>
+              <Font name="Lucida Calligraphy Italic" size="21.0"/>
+            </font>
+          </Label>
+          <AnchorPane layoutX="658.0" prefHeight="55.0" prefWidth="67.0">
+            <children>
+              <Sphere fx:id="logOff" layoutX="48.0" layoutY="18.0" onMouseReleased="#closeWindow"
+                radius="10.0" AnchorPane.bottomAnchor="27.0" AnchorPane.leftAnchor="38.0"
+                AnchorPane.rightAnchor="9.0" AnchorPane.topAnchor="8.0">
+                <effect>
+                  <ColorInput paint="#21cc76"/>
+                </effect>
+              </Sphere>
+            </children>
+          </AnchorPane>
+          <HBox layoutX="162.0" layoutY="38.0" prefHeight="33.0" prefWidth="331.0"
+            AnchorPane.bottomAnchor="330.0" AnchorPane.leftAnchor="162.0"
+            AnchorPane.rightAnchor="232.0" AnchorPane.topAnchor="38.0">
+            <children>
+              <Label text="Month" textAlignment="CENTER">
+                <font>
+                  <Font name="Lucida Calligraphy Italic" size="21.0"/>
+                </font>
+                <padding>
+                  <Insets left="50.0" right="32.0"/>
+                </padding>
+              </Label>
+              <TextField fx:id="month">
+                <HBox.margin>
+                  <Insets top="5.0"/>
+                </HBox.margin>
+              </TextField>
+            </children>
+          </HBox>
+          <TableView fx:id="dbTable" layoutX="173.0" layoutY="186.0" prefHeight="200.0"
+            prefWidth="541.0">
+            <columns>
+              <TableColumn fx:id="keyNumColumn" prefWidth="80.79998779296875" text="Number"/>
+              <TableColumn fx:id="dateAndTimeColumn" prefWidth="299.0" text="Date and Time"/>
+              <TableColumn fx:id="typeOfEventColumn" prefWidth="161.0" text="Type of Event"/>
+            </columns>
+          </TableView>
+          <HBox layoutX="163.0" layoutY="77.0" prefHeight="35.0" prefWidth="331.0">
+            <children>
+              <Label text="Date" textAlignment="CENTER">
+                <font>
+                  <Font name="Lucida Calligraphy Italic" size="21.0"/>
+                </font>
+                <padding>
+                  <Insets left="50.0" right="50.0"/>
+                </padding>
+              </Label>
+              <TextField fx:id="date">
+                <HBox.margin>
+                  <Insets top="6.0"/>
+                </HBox.margin>
+              </TextField>
+            </children>
+          </HBox>
+          <Button fx:id="searchDatabase" layoutX="590.0" layoutY="121.0" mnemonicParsing="false"
+            onAction="#updateTableView" prefHeight="30.0" prefWidth="83.0" text="Search">
+            <font>
+              <Font size="15.0"/>
+            </font>
+          </Button>
+          <HBox layoutX="163.0" layoutY="120.0" prefHeight="32.0" prefWidth="331.0">
+            <children>
+              <Label text="Type" textAlignment="CENTER">
+                <font>
+                  <Font name="Lucida Calligraphy Italic" size="21.0"/>
+                </font>
+                <padding>
+                  <Insets left="50.0" right="50.0"/>
+                </padding>
+              </Label>
+              <ComboBox fx:id="type" prefWidth="150.0">
+                <opaqueInsets>
+                  <Insets/>
+                </opaqueInsets>
+                <HBox.margin>
+                  <Insets top="5.0"/>
+                </HBox.margin>
+              </ComboBox>
+            </children>
+          </HBox>
+          <Button fx:id="viewAll" layoutX="590.0" layoutY="39.0" mnemonicParsing="false"
+            onAction="#fillTable" prefHeight="30.0" prefWidth="83.0" text="Show All"
+            textAlignment="CENTER">
+            <font>
+              <Font size="15.0"/>
+            </font>
+          </Button>
+        </children>
+      </AnchorPane>
+    </right>
+  </BorderPane>
+  <columnConstraints>
+    <ColumnConstraints/>
+  </columnConstraints>
+  <rowConstraints>
+    <RowConstraints/>
+  </rowConstraints>
+</GridPane>

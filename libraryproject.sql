@@ -1,0 +1,8 @@
+
+CREATE TABLE event (
+   keyID INT NOT NULL GENERATED ALWAYS AS IDENTITY,
+   dateTimeGroup TIMESTAMP NOT NULL,
+   eventType varchar (5) NOT NULL,
+   PRIMARY KEY (keyID)
+);
+
