@@ -1,5 +1,5 @@
 /***************************************************
- * File: dBProject.java
+ * File: DbProject.java
  * Author: Marion Armbruster
  * Date: 4 October 2018
  ****************************************************/
@@ -14,10 +14,10 @@ import javafx.stage.Stage;
 
 /**
  * The beginning of this database project. It contains the start method of JavaFX to set and begin
- * the gui, along with the main method needed by JavaFX. Check style says "Type name 'dBProject'
+ * the gui, along with the main method needed by JavaFX. Check style says "Type name 'DbProject'
  * must match pattern '^[A-Z][a-zA-Z0-9]*$'."
  */
-public class dBProject extends Application {
+public class DbProject extends Application {
 
   /**
    * The standard start method for JavaFX program to create a gui window interface.

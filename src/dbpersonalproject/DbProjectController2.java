@@ -1,5 +1,5 @@
 /***************************************************
- * File: dBProjectController2.java
+ * File: DbProjectController2.java
  * Author: Marion Armbruster
  * Date: 4 October 2018
  ****************************************************/
@@ -28,9 +28,9 @@ import javafx.stage.Stage;
  * two buttons that each log the system information such as current time as well as the type of
  * event, determined by which button is pressed. This information is stored in the database. This
  * class also contains a method that leads to the next screen of the gui. Check style says "Type
- * name 'dBProjectController1' must match pattern '^[A-Z][a-zA-Z0-9]*$'. (30:14) [TypeNameCheck]."
+ * name 'DbProjectController1' must match pattern '^[A-Z][a-zA-Z0-9]*$'. (30:14) [TypeNameCheck]."
  */
-public class dBProjectController2 {
+public class DbProjectController2 {
 
   @FXML
   private Button goToInEvent;
@@ -131,6 +131,7 @@ public class dBProjectController2 {
   void closeWindow(MouseEvent event) throws IOException {
     // @Author Damian Morgan
     // This is supposed to close out the window as though it were the red "x" exit button.
+    // FindBugs doesn't like system exit to be used at all.
     System.exit(0);
   }
 }

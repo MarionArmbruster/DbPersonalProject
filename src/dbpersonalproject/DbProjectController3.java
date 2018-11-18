@@ -1,5 +1,5 @@
 /***************************************************
- * File: dbProjectController3.java
+ * File: DbProjectController3.java
  * Author: Marion Armbruster
  * Date: 5 November 2018
  ****************************************************/
@@ -18,8 +18,8 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.TableColumn;
-import javafx.scene.control.TableView;
 import javafx.scene.control.ComboBox;
+import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.shape.Sphere;
 import javafx.stage.Stage;
@@ -29,10 +29,10 @@ import javafx.stage.Stage;
  * for buttons that display the entirety of the database, and will eventually allow the user to
  * search the database with certain conditions, taken from user input. This class also contains a
  * method that leads back to the second screen of the gui should the user wish to add more events to
- * the database. Check style says "Type name 'dBProjectController1' must match pattern
+ * the database. Check style says "Type name 'DbProjectController1' must match pattern
  * '^[A-Z][a-zA-Z0-9]*$'. (30:14) [TypeNameCheck]."
  */
-public class dbProjectController3 {
+public class DbProjectController3 {
 
   //for goToHome action
   @FXML
@@ -98,6 +98,7 @@ public class dbProjectController3 {
   void closeWindow(ActionEvent event) throws IOException {
     // @Author Damian Morgan
     // This is supposed to close out the window as though it were the red "x" exit button.
+    // FindBugs doesn't like system exit to be used at all.
     System.exit(0);
   }
 

@@ -1,5 +1,5 @@
 /***************************************************
- * File: dBProjectController1.java
+ * File: DbProjectController1.java
  * Author: Marion Armbruster
  * Date: 9 November 2018
  ****************************************************/
@@ -26,9 +26,9 @@ import javafx.stage.Stage;
  * This class is the controller for the first screen of the gui. It contains an action listener for
  * a button that connects to the database and displays in the console whether the connection was
  * successful or not. It also leads to the next screen of the gui. Check style says "Type name
- * 'dBProjectController1' must match pattern '^[A-Z][a-zA-Z0-9]*$'. (30:14) [TypeNameCheck]."
+ * 'DbProjectController1' must match pattern '^[A-Z][a-zA-Z0-9]*$'. (30:14) [TypeNameCheck]."
  */
-public class dBProjectController1 {
+public class DbProjectController1 {
 
   @FXML
   private Button connect;
@@ -82,6 +82,7 @@ public class dBProjectController1 {
   void closeWindow(ActionEvent event) throws IOException {
     // @Author Damian Morgan
     // This is supposed to close out the window as though it were the red "x" exit button.
+    // FindBugs doesn't like system exit to be used at all.
     System.exit(0);
   }
 }
