@@ -1,10 +1,7 @@
 /***************************************************
- * File: DBUtil.java
+ * File: DbUtil.java
  * Author: Marion Armbruster
  * Date: 17 November 2018
- *
- * Modified code from ONUR BASKIRT.
- * https://www.swtestacademy.com/database-operations-javafx/
  ****************************************************/
 
 package dbpersonalproject;
@@ -17,18 +14,18 @@ import java.sql.SQLException;
 import java.sql.Statement;
 
 /**
- * A class that handles the connection, disconnection, and query executions of the database. Check
- * style says that "Abbreviation in name 'DBUtil' must contain no more than '2' consecutive capital
- * letters." However, as this code was supplied by another, it is not mine to change.
+ * A class that handles the connection, disconnection, and query executions of the database.
+ * Modified code from ONUR BASKIRT.
+ * https://www.swtestacademy.com/database-operations-javafx/
  */
-public class DBUtil {
+public class DbUtil {
 
   /* the connection, at class-level; Check Style say "'static' modifier out of order with the JLS
   suggestions." However, as this code was supplied by another, it is not mine to change.*/
   private static Connection connection = null;
 
   // class-level String that contains the url of where to find the database information
-  final static String DATABASE_URL = "jdbc:derby:lib//libraryproject";
+  static final String DATABASE_URL = "jdbc:derby:lib//libraryproject";
 
   /**
    * The method of which the only purpose is to successfully connect to the database.
@@ -36,7 +33,8 @@ public class DBUtil {
    */
   public static void dbConnect() throws SQLException {
 
-    // establish the Connection to the database using the connection String with a standard try-catch
+    // establish the Connection to the database using the connection String with a standard
+    // try-catch
     try {
       connection = DriverManager.getConnection(DATABASE_URL);
     } catch (SQLException e) {
@@ -81,7 +79,8 @@ public class DBUtil {
 
       /* create a statement
       * FindBugs says "Method may fail to clean up stream or resource on checked exception."
-      * However, as this code was supplied by another, it is not mine to change.*/
+      * This resource will closed after the operation is finished, by calling the disconnect
+      * method.*/
       stmt = connection.createStatement();
 
       // execute the select (query) operation that was passed in

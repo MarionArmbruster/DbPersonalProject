@@ -17,8 +17,8 @@ import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
-import javafx.scene.control.TableColumn;
 import javafx.scene.control.ComboBox;
+import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.shape.Sphere;
@@ -99,7 +99,7 @@ public class DbProjectController3 {
     // @Author Damian Morgan
     // This is supposed to close out the window as though it were the red "x" exit button.
     // FindBugs doesn't like system exit to be used at all.
-    System.exit(0);
+    System.exit(0); // try Platform
   }
 
   /**
@@ -107,8 +107,8 @@ public class DbProjectController3 {
    * gui.
    *
    * @param event The standard event action listener.
-   * @Author Damian Morgan - gave assistance with this code Also found here:
-   * https://stackoverflow.com/questions/16176701/switch-between-panes-in-javafx
+   * @Author Damian Morgan - gave assistance with this code. Also found here:
+   *     https://stackoverflow.com/questions/16176701/switch-between-panes-in-javafx
    */
   @FXML
   void goToHome(ActionEvent event) throws IOException {
@@ -125,14 +125,14 @@ public class DbProjectController3 {
    * the objects that were added to the ObservableList in the table view of the gui.
    *
    * @param event The standard event action listener.
-   * @throws SQLException general exception in the event that data was not able to be retrieved from
-   * the database.
+   * @throws SQLException General exception in the event that data was not able to be retrieved
+   *                      from the database.
    */
   @FXML
   private void fillTable(ActionEvent event) throws SQLException {
     try {
       // gets all table data information
-      ObservableList<DataForTable> tableData = DataForTableDAO.makeTableAppear();
+      ObservableList<DataForTable> tableData = DataForTableDao.makeTableAppear();
       // populates the data into TableView
       populateData(tableData);
     } catch (SQLException sql) {

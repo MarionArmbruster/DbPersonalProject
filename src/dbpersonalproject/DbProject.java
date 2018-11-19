@@ -50,5 +50,5 @@ public class DbProject extends Application {
   public static void main(String[] args) {
     launch(args);
 
-  }// end main method
+  } // end main method
 }

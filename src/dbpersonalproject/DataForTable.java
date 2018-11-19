@@ -54,17 +54,12 @@ public class DataForTable {
     return dateTimeGroup;
   }
 
-  /*Check style says "Abbreviation in name 'getDTG' must contain no more than '2' consecutive
-   capital letters." However, this is a common abbreviation for "date time group".*/
-  public Object getDTG() {
+  public Object getDtg() {
     return dateTimeGroup.get();
   }
 
-  /*Check style says "Abbreviation in name 'getDTG' must contain no more than '2' consecutive
-    capital letters." However, this is a common abbreviation for "date time group". As well, the
-    argument needed to be slightly different, but still easily readable and concise. */
-  public void setDTG(Date dateTG) {
-    this.dateTimeGroup.set(dateTG);
+  public void setDate(Date date) {
+    this.dateTimeGroup.set(date);
   }
 
   // event type - inbound or outbound

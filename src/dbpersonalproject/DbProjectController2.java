@@ -32,6 +32,8 @@ import javafx.stage.Stage;
  */
 public class DbProjectController2 {
 
+  static final String DATABASE_URL = "jdbc:derby:lib//libraryproject";
+
   @FXML
   private Button goToInEvent;
 
@@ -60,12 +62,11 @@ public class DbProjectController2 {
    */
   @FXML
   void logBeginEvent(ActionEvent event) {
-    final String DATABASE_URL = "jdbc:derby:lib//libraryproject";
+
     try {
-      /*Check Style says "Abbreviation in name 'DATABASE_URL' must contain no more than '2'
-        consecutive capital letters." However, it appears to be convention for the connection url
-        to a database to be capitalized and in all caps. FindBugs says "Method may fail to clean
-        up stream or resource"*/
+      /* FindBugs says "Method may fail to clean up stream or resource."
+       * This resource will closed after the operation is finished, by calling the disconnect
+       * method in the DbUtil class*/
       Connection connection = DriverManager.getConnection(DATABASE_URL);
       Statement statement = connection.createStatement();
       statement
@@ -86,12 +87,11 @@ public class DbProjectController2 {
    */
   @FXML
   void logEndEvent(ActionEvent event) {
-    final String DATABASE_URL = "jdbc:derby:lib//libraryproject";
+
     try {
-      /*Check Style says "Abbreviation in name 'DATABASE_URL' must contain no more than '2'
-        consecutive capital letters." However, it appears to be convention for the connection url
-        to a database to be capitalized and in all caps. FindBugs says "Method may fail to clean
-        up stream or resource"*/
+      /* FindBugs says "Method may fail to clean up stream or resource."
+       * This resource will closed after the operation is finished, by calling the
+       * disconnect method in the DbUtil class*/
       Connection connection = DriverManager.getConnection(DATABASE_URL);
       Statement statement = connection.createStatement();
       statement
@@ -108,8 +108,8 @@ public class DbProjectController2 {
    * This method moves to the next scene, linked by the action of clicking the button in the gui.
    *
    * @param event The standard event action listener.
-   * @Author Damian Morgan - gave assistance with this code Also found here:
-   * https://stackoverflow.com/questions/16176701/switch-between-panes-in-javafx
+   * @Author Damian Morgan - gave assistance with this code. Also found here:
+   *     https://stackoverflow.com/questions/16176701/switch-between-panes-in-javafx
    */
   @FXML
   void goToSearch(ActionEvent event) throws IOException {
@@ -132,6 +132,6 @@ public class DbProjectController2 {
     // @Author Damian Morgan
     // This is supposed to close out the window as though it were the red "x" exit button.
     // FindBugs doesn't like system exit to be used at all.
-    System.exit(0);
+    System.exit(0); // try Platform
   }
 }

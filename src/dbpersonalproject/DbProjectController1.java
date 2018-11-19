@@ -30,6 +30,8 @@ import javafx.stage.Stage;
  */
 public class DbProjectController1 {
 
+  static final String DATABASE_URL = "jdbc:derby:lib//libraryproject";
+
   @FXML
   private Button connect;
 
@@ -47,11 +49,7 @@ public class DbProjectController1 {
   @FXML
   void goToNext(ActionEvent event) throws IOException {
 
-    final String DATABASE_URL = "jdbc:derby:lib//libraryproject";
     try (
-        /*Check Style says "Abbreviation in name 'DATABASE_URL' must contain no more than '2'
-        consecutive capital letters." However, it appears to be convention for the connection url
-        to a database to be capitalized and in all caps.*/
         Connection connection = DriverManager.getConnection(DATABASE_URL);
         Statement statement = connection.createStatement();
         ResultSet resultSet = statement.executeQuery("SELECT* FROM EVENT")) {
@@ -83,6 +81,6 @@ public class DbProjectController1 {
     // @Author Damian Morgan
     // This is supposed to close out the window as though it were the red "x" exit button.
     // FindBugs doesn't like system exit to be used at all.
-    System.exit(0);
+    System.exit(0); // try Platform
   }
 }

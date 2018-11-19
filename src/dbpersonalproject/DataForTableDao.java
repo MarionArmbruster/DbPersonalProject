@@ -1,5 +1,5 @@
 /***************************************************
- * File: DataForTableDAO.java
+ * File: DataForTableDao.java
  * Author: Marion Armbruster
  * Date: 17 November 2018
  *
@@ -19,12 +19,12 @@ import javafx.collections.ObservableList;
  * A "Data Access Object" class that acts as an in-between for the database and JavaFX (with gui).
  * It allows for modularity and handles any possible related database operations that are needed and
  * "informs" the JavaFX classes of any changes made to the database. Check style says "Abbreviation
- * in name 'DataForTableDAO' must contain no more than '2' consecutive capital letters. However, as
+ * in name 'DataForTableDao' must contain no more than '2' consecutive capital letters. However, as
  * this code was supplied by another, it was deemed fitting to maintain the convention for a data
  * access object class file.
  */
 
-public class DataForTableDAO {
+public class DataForTableDao {
 
   /**
    * This method is responsible for taking the data from the database and displaying it in the table
@@ -43,7 +43,7 @@ public class DataForTableDAO {
     try {
 
       // gets the ResultSet from the dbExecuteQuery method
-      ResultSet rsData = DBUtil.dbExecuteQuery(selectStmt);
+      ResultSet rsData = DbUtil.dbExecuteQuery(selectStmt);
 
       // sends ResultSet to the getOList method and get DataForTable object
       ObservableList<DataForTable> list = getOList(rsData);
@@ -65,8 +65,8 @@ public class DataForTableDAO {
    *
    * @param rs the ResultSet of the database
    * @return class object that has the data from the database (the ObservableList)
-   * @throws SQLException A generic sql exception in the event that the sql statement fails i.e. the
-   * ResultSet is bad.
+   * @throws SQLException A generic sql exception in the event that the sql statement fails i.e.
+   *                      the ResultSet is bad.
    */
   private static ObservableList<DataForTable> getOList(ResultSet rs) throws SQLException {
 
@@ -76,7 +76,7 @@ public class DataForTableDAO {
     while (rs.next()) {
       DataForTable data = new DataForTable();
       data.setKey(rs.getInt("KeyID"));
-      data.setDTG(rs.getDate("DateTimeGroup"));
+      data.setDate(rs.getDate("DateTimeGroup"));
       data.setEventT(rs.getString("EventType"));
       // Add data to the ObservableList
       tableData.add(data);
