@@ -22,6 +22,7 @@ transition to the next scene
   another unique key identifier
   -You can also enjoy the short animation displayed on the screen
   -Clicking the "Search" button will transition to the third and final scene
+
 -On the third scene is a "Go back" button so that you can log more events if you wish, as well as several other button and fields.
   - The Month, and Date fields allow you to type into the field to seach the database, or alternatively, you can also use the Type
     drop-down field as a search term
