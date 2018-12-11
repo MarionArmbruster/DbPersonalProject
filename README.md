@@ -41,14 +41,23 @@ transition to the next scene
 # Built With
 DbPersonalProject program was built in the Intellij IDEA integrated development environment. It was made using the Java ver. 1.8.0_181.
 Resources used: [All about SQL](https://www.w3schools.com/sql/)
+
                 [Regular Expression](https://stackoverflow.com/questions/3148240/why-doesnt-01-12-range-work-as-expected)
+                
                 [More Regex](https://www.regular-expressions.info/numericranges.html)  
-                [Even more Regex](https://www.oreilly.com/library/view/regular-expressions-cookbook/9781449327453/ch06s07.html)    
+                
+                [Even more Regex](https://www.oreilly.com/library/view/regular-expressions-cookbook/9781449327453/ch06s07.html)   
+                
                 [All about Databases and how to do stuff](https://www.swtestacademy.com/database-operations-javafx/)
+                
                 [Changing Scenes](https://stackoverflow.com/questions/16176701/switch-between-panes-in-javafx) as well as Damian Morgan
+                
                 [Animation](https://examples.javacodegeeks.com/desktop-java/javafx/javafx-animation-example/)
+                
                 [More Animation](https://www.youtube.com/watch?v=VicKcKBso6o)
-                [A Transition](here: https://stackoverflow.com/questions/30543619/how-to-use-pausetransition-method-in-javafx)
+                
+                [A Transition](https://stackoverflow.com/questions/30543619/how-to-use-pausetransition-method-in-javafx)
+                
                 And many others that may not have gotten on this list.
 # Author
 - Developed by Marion Armbruster
