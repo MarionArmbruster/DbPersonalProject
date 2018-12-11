@@ -41,7 +41,10 @@ public class DbProjectController1 {
   /**
    * This method opens the connection to the database in a try-with-resources block and displays its
    * success or failure in the console window. A secondary action after the database has been opened
-   * is to move to the new scene, linked by the action of clicking the button in the gui.
+   * is to move to the new scene, linked by the action of clicking the button in the gui. In order
+   * to use a database, a database url is necessary, along with a Connection object, a Statement
+   * object, and a resultSet. Having these allow the use of sql statements and  to affect the
+   * database.
    *
    * @param event The standard event action listener.
    */
