@@ -68,5 +68,5 @@ Controllers and fxml files for the bulk of the program and can use css to separa
 can utilize a Model-view-controller (MVC) design principle and design where the model of the program is spearate from both the view (fxml
 file) and the control (controller file) of the program.
 
-JavaFX is much easier to use than Java Swing for some cases. And for this projract, it was much easier than in Swing, as well as being
-exciting to watch it happen.
+JavaFX is much easier to use than Java Swing for some cases. And for this project, it was much easier than in Swing, as well as being
+exciting to watch it happen and become something that I am proud of.
