@@ -14,7 +14,6 @@ import java.sql.SQLException;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 
-
 /**
  * A "Data Access Object" class that acts as an in-between for the database and JavaFX (with gui).
  * It allows for modularity and handles any possible related database operations that are needed and
@@ -33,15 +32,13 @@ public class DataForTableDao {
    * @return The object of the ObservableList that has been filled with the database's data.
    * @throws SQLException if the select fails to select from the database
    */
-  public static ObservableList<DataForTable> makeTableAppear() throws SQLException {
+  public static ObservableList<DataForTable> makeTableAppear(String sql) throws SQLException {
 
-    // declares an sql SELECT statement; this selects the entirety of the database table named
-    // and all the data contained within it.*/
-    String selectStmt = "SELECT * FROM Event";
+    // an sql statement that is passed in from the calling method
+    String selectStmt = sql;
 
-    // try to execute the SELECT statement
+    // try to execute the sql statement
     try {
-
       // gets the ResultSet from the dbExecuteQuery method
       ResultSet rsData = DbUtil.dbExecuteQuery(selectStmt);
 
@@ -73,10 +70,12 @@ public class DataForTableDao {
     // declares a observable List which comprises of the DataForTable objects
     ObservableList<DataForTable> tableData = FXCollections.observableArrayList();
 
+    // while there is still an object in the ResultSet, the class object calls the setter in the
+    // class to receive the object and data-type from the database table from the column specified
     while (rs.next()) {
       DataForTable data = new DataForTable();
       data.setKey(rs.getInt("KeyID"));
-      data.setDate(rs.getDate("DateTimeGroup"));
+      data.setDate(rs.getTimestamp("DateTimeGroup"));
       data.setEventT(rs.getString("EventType"));
       // Add data to the ObservableList
       tableData.add(data);

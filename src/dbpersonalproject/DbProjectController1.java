@@ -12,6 +12,7 @@ import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -19,14 +20,12 @@ import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
-import javafx.scene.shape.Sphere;
 import javafx.stage.Stage;
 
 /**
  * This class is the controller for the first screen of the gui. It contains an action listener for
  * a button that connects to the database and displays in the console whether the connection was
- * successful or not. It also leads to the next screen of the gui. Check style says "Type name
- * 'DbProjectController1' must match pattern '^[A-Z][a-zA-Z0-9]*$'. (30:14) [TypeNameCheck]."
+ * successful or not. It also leads to the next screen of the gui.
  */
 public class DbProjectController1 {
 
@@ -37,7 +36,7 @@ public class DbProjectController1 {
 
   // for closing the window
   @FXML
-  private Sphere logOff;
+  private Button logOff;
 
   /**
    * This method opens the connection to the database in a try-with-resources block and displays its
@@ -52,7 +51,7 @@ public class DbProjectController1 {
     try (
         Connection connection = DriverManager.getConnection(DATABASE_URL);
         Statement statement = connection.createStatement();
-        ResultSet resultSet = statement.executeQuery("SELECT* FROM EVENT")) {
+        ResultSet resultSet = statement.executeQuery("SELECT * FROM EVENT")) {
       System.out.println("Database Connected.");
     } catch (SQLException sqlException) {
       System.out.println("SQL Exception.");
@@ -70,17 +69,14 @@ public class DbProjectController1 {
   }
 
   /**
-   * This is a method that will close the window and terminate the program. It is not yet
-   * implemented as the functionality of the program will improve over time. It is present on each
+   * This is a method that will close the window and terminate the program. It is present on each
    * scene of the gui.
    *
    * @param event The standard event action listener.
+   * @Author Damian Morgan
    */
   @FXML
   void closeWindow(ActionEvent event) throws IOException {
-    // @Author Damian Morgan
-    // This is supposed to close out the window as though it were the red "x" exit button.
-    // FindBugs doesn't like system exit to be used at all.
-    System.exit(0); // try Platform
+    Platform.exit();
   }
 }

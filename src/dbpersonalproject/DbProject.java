@@ -32,7 +32,7 @@ public class DbProject extends Application {
     // window size set to be optimal for personal computer, may not be appropriate for other
     // resolutions on other personal computers
     Scene scene = new Scene(root, 725, 425);
-    primaryStage.setTitle("Database Project");
+    primaryStage.setTitle("Library Tracker");
     primaryStage.setScene(scene);
 
     // retrieved from Stack Overflow, this forces the window to not be resizable, up until such a

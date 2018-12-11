@@ -7,7 +7,6 @@
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.control.TextField?>
-<?import javafx.scene.effect.ColorInput?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.ColumnConstraints?>
@@ -16,7 +15,6 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.layout.VBox?>
-<?import javafx.scene.shape.Sphere?>
 <?import javafx.scene.text.Font?>
 
 <!-- 5 Novemeber 2018 @Author Marion Armbruster
@@ -36,8 +34,7 @@ The fxml that forms the third scene in the stage. It is a part of the View in th
                 <children>
                   <Button fx:id="home" alignment="CENTER" maxHeight="-Infinity"
                     maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#goToHome"
-                    prefHeight="40.0" text="Go Back"
-                    textAlignment="CENTER">
+                    prefHeight="40.0" text="Go Back" textAlignment="CENTER">
                     <font>
                       <Font size="15.0"/>
                     </font>
@@ -56,18 +53,17 @@ The fxml that forms the third scene in the stage. It is a part of the View in th
           </Label>
           <AnchorPane layoutX="658.0" prefHeight="55.0" prefWidth="67.0">
             <children>
-              <Sphere fx:id="logOff" layoutX="48.0" layoutY="18.0" onMouseReleased="#closeWindow"
-                radius="10.0" AnchorPane.bottomAnchor="27.0" AnchorPane.leftAnchor="38.0"
-                AnchorPane.rightAnchor="9.0" AnchorPane.topAnchor="8.0">
-                <effect>
-                  <ColorInput paint="#21cc76"/>
-                </effect>
-              </Sphere>
+              <Button fx:id="logOff" layoutX="7.0" layoutY="3.0" mnemonicParsing="false"
+                onAction="#closeWindow" prefHeight="14.0" prefWidth="55.0" text="Log off">
+                <font>
+                  <Font size="10.0"/>
+                </font>
+              </Button>
             </children>
           </AnchorPane>
-          <HBox layoutX="162.0" layoutY="38.0" prefHeight="33.0" prefWidth="331.0"
-            AnchorPane.bottomAnchor="330.0" AnchorPane.leftAnchor="162.0"
-            AnchorPane.rightAnchor="232.0" AnchorPane.topAnchor="38.0">
+          <HBox layoutX="163.0" layoutY="64.0" prefHeight="33.0" prefWidth="331.0"
+            AnchorPane.bottomAnchor="303.0" AnchorPane.leftAnchor="163.0"
+            AnchorPane.rightAnchor="231.0" AnchorPane.topAnchor="64.0">
             <children>
               <Label text="Month" textAlignment="CENTER">
                 <font>
@@ -84,7 +80,7 @@ The fxml that forms the third scene in the stage. It is a part of the View in th
               </TextField>
             </children>
           </HBox>
-          <TableView fx:id="dbTable" layoutX="173.0" layoutY="186.0" prefHeight="200.0"
+          <TableView fx:id="dbTable" layoutX="173.0" layoutY="196.0" prefHeight="200.0"
             prefWidth="541.0">
             <columns>
               <TableColumn fx:id="keyNumColumn" prefWidth="80.79998779296875" text="Number"/>
@@ -92,7 +88,7 @@ The fxml that forms the third scene in the stage. It is a part of the View in th
               <TableColumn fx:id="typeOfEventColumn" prefWidth="161.0" text="Type of Event"/>
             </columns>
           </TableView>
-          <HBox layoutX="163.0" layoutY="77.0" prefHeight="35.0" prefWidth="331.0">
+          <HBox layoutX="163.0" layoutY="103.0" prefHeight="35.0" prefWidth="331.0">
             <children>
               <Label text="Date" textAlignment="CENTER">
                 <font>
@@ -109,13 +105,14 @@ The fxml that forms the third scene in the stage. It is a part of the View in th
               </TextField>
             </children>
           </HBox>
-          <Button fx:id="searchDatabase" layoutX="590.0" layoutY="121.0" mnemonicParsing="false"
-            onAction="#updateTableView" prefHeight="30.0" prefWidth="83.0" text="Search">
+          <Button fx:id="searchDatabase" layoutX="590.0" layoutY="145.0" mnemonicParsing="false"
+            onAction="#updateTableView" prefHeight="30.0" prefWidth="83.0" text="Search"
+            textAlignment="CENTER">
             <font>
               <Font size="15.0"/>
             </font>
           </Button>
-          <HBox layoutX="163.0" layoutY="120.0" prefHeight="32.0" prefWidth="331.0">
+          <HBox layoutX="163.0" layoutY="146.0" prefHeight="32.0" prefWidth="331.0">
             <children>
               <Label text="Type" textAlignment="CENTER">
                 <font>
@@ -135,8 +132,15 @@ The fxml that forms the third scene in the stage. It is a part of the View in th
               </ComboBox>
             </children>
           </HBox>
-          <Button fx:id="viewAll" layoutX="590.0" layoutY="39.0" mnemonicParsing="false"
+          <Button fx:id="viewAll" layoutX="590.0" layoutY="65.0" mnemonicParsing="false"
             onAction="#fillTable" prefHeight="30.0" prefWidth="83.0" text="Show All"
+            textAlignment="CENTER">
+            <font>
+              <Font size="15.0"/>
+            </font>
+          </Button>
+          <Button fx:id="deleteFromDatabase" layoutX="590.0" layoutY="105.0" mnemonicParsing="false"
+            onAction="#deleteRecord" prefHeight="30.0" prefWidth="83.0" text="Delete"
             textAlignment="CENTER">
             <font>
               <Font size="15.0"/>

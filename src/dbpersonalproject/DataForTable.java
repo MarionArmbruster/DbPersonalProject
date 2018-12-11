@@ -6,6 +6,10 @@
 
 package dbpersonalproject;
 
+import java.sql.Timestamp;
+import java.text.DateFormat;
+import java.text.MessageFormat;
+import java.text.SimpleDateFormat;
 import java.util.Date;
 import javafx.beans.property.IntegerProperty;
 import javafx.beans.property.SimpleIntegerProperty;
@@ -24,7 +28,7 @@ public class DataForTable {
 
   // dataTypes and names of TableView columns
   private IntegerProperty key;
-  private SimpleObjectProperty<Date> dateTimeGroup;
+  private SimpleObjectProperty<Timestamp> dateTimeGroup;
   private StringProperty eventType;
 
   /**
@@ -49,8 +53,8 @@ public class DataForTable {
     this.key.set(number);
   }
 
-  // system time stamp
-  public SimpleObjectProperty<Date> dateTimeGroupProperty() {
+  // system time stamp stored in database
+  public SimpleObjectProperty<Timestamp> dateTimeGroupProperty() {
     return dateTimeGroup;
   }
 
@@ -58,8 +62,8 @@ public class DataForTable {
     return dateTimeGroup.get();
   }
 
-  public void setDate(Date date) {
-    this.dateTimeGroup.set(date);
+  public void setDate(Timestamp t) {
+    this.dateTimeGroup.set(t);
   }
 
   // event type - inbound or outbound
@@ -75,6 +79,12 @@ public class DataForTable {
     this.eventType.set(event);
   }
 
+  /*@Override
+  public String toString() {
+    String fmt = "MM/dd/yyyy HH:mm:ss a";
+    DateFormat df = new SimpleDateFormat(fmt);
+    return
+  }*/
 }
 
 

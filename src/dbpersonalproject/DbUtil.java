@@ -15,13 +15,11 @@ import java.sql.Statement;
 
 /**
  * A class that handles the connection, disconnection, and query executions of the database.
- * Modified code from ONUR BASKIRT.
- * https://www.swtestacademy.com/database-operations-javafx/
+ * Modified code from ONUR BASKIRT. https://www.swtestacademy.com/database-operations-javafx/
  */
 public class DbUtil {
 
-  /* the connection, at class-level; Check Style say "'static' modifier out of order with the JLS
-  suggestions." However, as this code was supplied by another, it is not mine to change.*/
+  // the connection, at class-level.
   private static Connection connection = null;
 
   // class-level String that contains the url of where to find the database information
@@ -29,6 +27,7 @@ public class DbUtil {
 
   /**
    * The method of which the only purpose is to successfully connect to the database.
+   *
    * @throws SQLException if the connection failed for any reason.
    */
   public static void dbConnect() throws SQLException {
@@ -45,7 +44,9 @@ public class DbUtil {
   }
 
   /**
-   * The method of which the only purpose is to successfully disconnect to, or close, the database.
+   * The method of which the only purpose is to successfully disconnect from, or close, the
+   * database.
+   *
    * @throws SQLException if the connection to the database was not closed for any reason.
    */
   public static void dbDisconnect() throws SQLException {
@@ -60,10 +61,12 @@ public class DbUtil {
 
   /**
    * This is the method that executes any database query operation passed into it.
-   * @param queryStmt a String that holds whichever query statement is to be performed on
-   *                  the database
-   * @return the CachedRowSet which holds the ResultSet
-   * @throws SQLException in the event that the query has nothing to act upon in the database
+   *
+   * @param queryStmt A String that holds whichever query statement is to be performed on the
+   *                  database.
+   * @return Returns the CachedRowSet which holds the ResultSet.
+   * @throws SQLException In the event that the query has nothing to act upon in the database or
+   *                      if something else goes wrong.
    */
   public static ResultSet dbExecuteQuery(String queryStmt)
       throws SQLException {
@@ -78,12 +81,12 @@ public class DbUtil {
       System.out.println("Select statement: " + queryStmt + "\n");
 
       /* create a statement
-      * FindBugs says "Method may fail to clean up stream or resource on checked exception."
-      * This resource will closed after the operation is finished, by calling the disconnect
-      * method.*/
+       * FindBugs says "Method may fail to clean up stream or resource on checked exception."
+       * This resource will close after the operation is finished, by calling the disconnect
+       * method.*/
       stmt = connection.createStatement();
 
-      // execute the select (query) operation that was passed in
+      // execute the selected (query) operation that was passed in
       resultSet = stmt.executeQuery(queryStmt);
 
       /* In order to prevent "java.sql.SQLRecoverableException: Closed Connection: next" error,
@@ -105,7 +108,42 @@ public class DbUtil {
       // calls the method the close the connection to the database
       dbDisconnect();
     }
-    //Return CachedRowSet
+    // return CachedRowSet
     return crs;
+  }
+
+  /**
+   * This method performs an update operation on the database; this could be an update to a record
+   * already in the database, to insert (or add) to the database, or to delete a record from the
+   * database.
+   *
+   * @param sqlStmt A String that holds whichever type-query statement is to be performed on the
+   *                database.
+   * @throws SQLException In the event that the query has nothing to act upon in the database or if
+   *                      something else goes wrong.
+   */
+  public static void dbExecuteUpdate(String sqlStmt) throws SQLException {
+    // declares statement as null
+    Statement stmt = null;
+    try {
+      // connects to the database
+      dbConnect();
+
+      // create  the statement
+      stmt = connection.createStatement();
+
+      // uses the executeUpdate command with the sql statement that was passed in
+      stmt.executeUpdate(sqlStmt);
+    } catch (SQLException e) {
+      System.out.println("Problem occurred at executeUpdate operation : " + e);
+      throw e;
+    } finally {
+      if (stmt != null) {
+        // close the statement
+        stmt.close();
+      }
+      // closes the connection to the database
+      dbDisconnect();
+    }
   }
 }
