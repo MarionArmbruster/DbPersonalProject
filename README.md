@@ -3,8 +3,9 @@
 The DbPersonalProject is my personal program that incorporates a derby database, IntellJ IDEA IDE and my own creativity, in addition to
 many, many sources and outside assistance. It uses Java and JavaFX which is a facet of Java that uses fxml files for formatting a gui
 and controller files to determine what objects in the gui do, such as actions that occur due to user input. This program was an 
-individual assignment for my COP 3003 class during the Fall 2018 semester and it displays a gui that This program uses the Google Java
-Style guide and adheres to GUI Design Principles.
+individual assignment for my COP 3003 class during the Fall 2018 semester. 
+
+This program uses the Google Java Style guide and adheres to the GUI Design Principles. There is contrast between the screen elements, groupings are present and not placed wildly, the screen elements and the groups are aligned (especially on the third scene), and the colors and graphics are effective and simple. There is clarity in the visual elements used, the functions of elements, and the words and text that are displayed.
 
 # Demonstration
 // TO DO: Add an animated gif. You can use ShareX, GIPHY Capture or another tool. https://blog.github.com/2018-06-29-GIF-that-keeps-on-GIFing/ Note for school project: This is a great way for friends and family to easily see your project in action.
