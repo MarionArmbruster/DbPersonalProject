@@ -16,16 +16,12 @@ program, run the Main class contained in the package and follow the below instru
 transition to the next scene
 
 -On the second scene, you can hit any of the buttons to either log an event in, log an event out, or go to the third scene.
-  
-  -Logging an event in will cause the system date and time to be inserted into the database, along with the "in" event tag and a unique
+    -Logging an event in will cause the system date and time to be inserted into the database, along with the "in" event tag and a unique
   key identifier
-  
-  -Logging an event out will also cause the system date and time to be inserted into the database, along with the "out" event tag and 
+    -Logging an event out will also cause the system date and time to be inserted into the database, along with the "out" event tag and 
   another unique key identifier
-  
-  -You can also enjoy the short animation displayed on the screen
-  
-  -Clicking the "Search" button will transition to the third and final scene
+    -You can also enjoy the short animation displayed on the screen
+    -Clicking the "Search" button will transition to the third and final scene
 
 -On the third scene is a "Go back" button so that you can log more events if you wish, as well as several other button and fields.
   - The Month, and Date fields allow you to type into the field to seach the database, or alternatively, you can also use the Type
