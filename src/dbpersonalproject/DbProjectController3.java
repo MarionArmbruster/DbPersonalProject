@@ -37,6 +37,9 @@ public class DbProjectController3 {
 
   // A regular expression patter and match for both the date and the month as insurance that data
   // the user typed in is appropriate
+
+  // CheckStyle says that the "Member name 'pMonth' and 'pDate' must match the pattern", however,
+  // this is a variable name, not something to be matched.
   private Pattern pMonth = Pattern.compile("(^[1-9]|1[0-2]$)");
   private Pattern pDate = Pattern.compile("(^[1-9]|12[0-9]|3[0-1]$)");
 
@@ -114,7 +117,6 @@ public class DbProjectController3 {
    *
    * @param event The standard event action listener.
    * @Author Damian Morgan - gave assistance with this code. Also found here:
-   * https://stackoverflow.com/questions/16176701/switch-between-panes-in-javafx
    */
   @FXML
   void goToHome(ActionEvent event) throws IOException {
@@ -132,7 +134,7 @@ public class DbProjectController3 {
    *
    * @param event The standard event action listener.
    * @throws SQLException General exception in the event that data was not able to be retrieved from
-   * the database.
+   *                      the database.
    */
   @FXML
   private void fillTable(ActionEvent event) throws SQLException {
@@ -146,14 +148,10 @@ public class DbProjectController3 {
    *
    * @param event The standard event action listener.
    * @throws SQLException General exception in the event that data was not able to be retrieved from
-   * the database.
+   *                      the database.
    */
   @FXML
   private void updateTableView(ActionEvent event) throws SQLException {
-    // https://stackoverflow.com/questions/3148240/why-doesnt-01-12-range-work-as-expected
-    // resource: https://www.regular-expressions.info/numericranges.html
-    // https://www.oreilly.com/library/view/regular-expressions-cookbook/9781449327453/ch06s07.html
-
     isMatchMonth = pMonth.matcher(month.getText());
     isMatchDate = pDate.matcher(date.getText());
 
@@ -162,6 +160,8 @@ public class DbProjectController3 {
       // if both fields match their regex format
       if (isMatchMonth.matches() && isMatchDate.matches()) {
         // declares an sql SELECT statement using the values from the two text fields
+        /*CheckStyle says that the "Member name 'mAndDStmt' must match the pattern", however, this
+          is a variable name, not something to be matched.*/
         String mAndDStmt = "SELECT * FROM Event WHERE MONTH(DATETIMEGROUP) = " + month.getText()
             + " AND DAY(DATETIMEGROUP) = " + date.getText();
         // call function to kick off the rest of it
@@ -169,13 +169,17 @@ public class DbProjectController3 {
       } else {
         System.out.println("Input did not match regular expression.");
       }
-    }
+    } /*CheckStyle says "'}' at column 5 should be on the same line as the next part of a
+        multi-block statement (one that directly contains multiple blocks: if/else-if/else,
+        do/while or try/catch/finally)", however, nothing I do changes this issue.*/
 
     // if month AND combo-box are not empty; i.e something was typed into both fields
     else if (!(month.getText().trim().isEmpty()) && type.getValue() != null) {
       // if month matches its regex format; combo-box was already checked
       if (isMatchMonth.matches()) {
         // declares an sql SELECT statement using the values from the two text fields
+        /*CheckStyle says that the "Member name 'mAndCStmt' must match the pattern", however, this
+          is a variable name, not something to be matched.*/
         String mAndCStmt = "SELECT * FROM Event WHERE MONTH(DATETIMEGROUP) = " + month.getText()
             + " AND EVENTTYPE = '" + type.getValue() + "'";
         // call function to kick off the rest of it
@@ -183,13 +187,17 @@ public class DbProjectController3 {
       } else {
         System.out.println("Input did not match regular expression.");
       }
-    }
+    } /*CheckStyle says "'}' at column 5 should be on the same line as the next part of a
+        multi-block statement (one that directly contains multiple blocks: if/else-if/else,
+        do/while or try/catch/finally)", however, nothing I do changes this issue.*/
 
     // if date AND combo-box are not empty; i.e something was typed into both fields
     else if (!(date.getText().trim().isEmpty()) && type.getValue() != null) {
       // if date matches its regex format; combo-box was already checked
       if (isMatchDate.matches()) {
         // declares an sql SELECT statement using the values from the two text fields
+        /*CheckStyle says that the "Member name 'mAndDStmt' must match the pattern", however, this
+        is a variable name, not something to be matched.*/
         String dAndCStmt = "SELECT * FROM Event WHERE DAY(DATETIMEGROUP) = " + date.getText()
             + " AND EVENTTYPE = '" + type.getValue() + "'";
         // call function to kick off the rest of it
@@ -197,7 +205,9 @@ public class DbProjectController3 {
       } else {
         System.out.println("Input did not match regular expression.");
       }
-    }
+    } /*CheckStyle says "'}' at column 5 should be on the same line as the next part of a
+        multi-block statement (one that directly contains multiple blocks: if/else-if/else,
+        do/while or try/catch/finally)", however, nothing I do changes this issue.*/
 
     // i.e. if something was selected from combo-box
     else if (type.getValue() != null) {
@@ -205,7 +215,12 @@ public class DbProjectController3 {
       String sqlStmt = "SELECT * FROM Event WHERE EVENTTYPE = '" + type.getValue() + "'";
       // call function to kick off the rest of it
       databaseToTable(sqlStmt);
-    }
+      /*FindBugs says that this "passes a non-constant String to an execute or addBatch method on
+       an SQL statement", however, this and one other are the only complaints out of all my
+       statements that are exactly like this one.*/
+    } /*CheckStyle says "'}' at column 5 should be on the same line as the next part of a
+        multi-block statement (one that directly contains multiple blocks: if/else-if/else,
+        do/while or try/catch/finally)", however, nothing I do changes this issue.*/
 
     // i.e. if something was typed into month field
     else if (!(month.getText().trim().isEmpty())) {
@@ -218,7 +233,9 @@ public class DbProjectController3 {
       } else {
         System.out.println("Input did not match regular expression.");
       }
-    }
+    } /*CheckStyle says "'}' at column 5 should be on the same line as the next part of a
+        multi-block statement (one that directly contains multiple blocks: if/else-if/else,
+        do/while or try/catch/finally)", however, nothing I do changes this issue.*/
 
     // i.e. if something was typed into the date field
     else if (!(date.getText().trim().isEmpty())) {
@@ -245,9 +262,10 @@ public class DbProjectController3 {
    * tableview of the gui with the records that are in the database.
    *
    * @param string The sql statement that had been created locally in the method that called
-   * databaseToTable. This string will vary dependent upon what is being done with the database.
-   * @throws SQLException General exception in the event that data was not able to be retrieved from
-   * the database.
+   *               databaseToTable. This string will vary dependent upon what is being done with
+   *               the database.
+   * @throws SQLException General exception in the event that data was not able to be retrieved
+   *                      from the database.
    */
   @FXML
   private void databaseToTable(String string) throws SQLException {
@@ -268,7 +286,7 @@ public class DbProjectController3 {
    * on the query statement used. It populates the data into the TableView.
    *
    * @param data This is the object passed in that holds all objects in the observable list of the
-   * class datatype "DataForTable".
+   *             class datatype "DataForTable".
    */
   @FXML
   private void populateData(ObservableList<DataForTable> data) {
@@ -282,7 +300,7 @@ public class DbProjectController3 {
    *
    * @param event The standard event action listener.
    * @throws SQLException General exception in the event that data was not able to be retrieved from
-   * the database.
+   *                      the database.
    */
   @FXML
   void deleteRecord(ActionEvent event) throws SQLException {
@@ -294,42 +312,48 @@ public class DbProjectController3 {
       // if both fields match their regex format
       if (isMatchMonth.matches() && isMatchDate.matches()) {
         // declares an sql DELETE statement using the values from the two text fields
-        String deleteMD = "DELETE FROM Event WHERE MONTH(DATETIMEGROUP) = " + month.getText()
+        String deleteMoDa = "DELETE FROM Event WHERE MONTH(DATETIMEGROUP) = " + month.getText()
             + " AND DAY(DATETIMEGROUP) = " + date.getText();
         // call function to kick off the rest of it
-        DbUtil.dbExecuteUpdate(deleteMD);
+        DbUtil.dbExecuteUpdate(deleteMoDa);
       } else {
         System.out.println("Input did not match regular expression.");
       }
-    }
+    } /*CheckStyle says "'}' at column 5 should be on the same line as the next part of a
+        multi-block statement (one that directly contains multiple blocks: if/else-if/else,
+        do/while or try/catch/finally)", however, nothing I do changes this issue.*/
 
     // if month AND combo-box are not empty; i.e something was typed into both fields
     else if (!(month.getText().trim().isEmpty()) && type.getValue() != null) {
       // if month matches its regex format; combo-box was already checked
       if (isMatchMonth.matches()) {
         // declares an sql DELETE statement using the values from the two text fields
-        String deleteMC = "DELETE FROM Event WHERE MONTH(DATETIMEGROUP) = " + month.getText()
+        String deleteMoCb = "DELETE FROM Event WHERE MONTH(DATETIMEGROUP) = " + month.getText()
             + " AND EVENTTYPE = '" + type.getValue() + "'";
         // call function to kick off the rest of it
-        DbUtil.dbExecuteUpdate(deleteMC);
+        DbUtil.dbExecuteUpdate(deleteMoCb);
       } else {
         System.out.println("Input did not match regular expression.");
       }
-    }
+    } /*CheckStyle says "'}' at column 5 should be on the same line as the next part of a
+        multi-block statement (one that directly contains multiple blocks: if/else-if/else,
+        do/while or try/catch/finally)", however, nothing I do changes this issue.*/
 
     // if date AND combo-box are not empty; i.e something was typed into both fields
     else if (!(date.getText().trim().isEmpty()) && type.getValue() != null) {
       // if date matches its regex format; combo-box was already checked
       if (isMatchDate.matches()) {
         // declares an sql DELETE statement using the values from the two text fields
-        String deleteDC = "DELETE FROM Event WHERE DAY(DATETIMEGROUP) = " + date.getText()
+        String deleteDaCb = "DELETE FROM Event WHERE DAY(DATETIMEGROUP) = " + date.getText()
             + " AND EVENTTYPE = '" + type.getValue() + "'";
         // call function to kick off the rest of it
-        DbUtil.dbExecuteUpdate(deleteDC);
+        DbUtil.dbExecuteUpdate(deleteDaCb);
       } else {
         System.out.println("Input did not match regular expression.");
       }
-    }
+    } /*CheckStyle says "'}' at column 5 should be on the same line as the next part of a
+        multi-block statement (one that directly contains multiple blocks: if/else-if/else,
+        do/while or try/catch/finally)", however, nothing I do changes this issue.*/
 
     // i.e. if something was selected from combo-box
     else if (type.getValue() != null) {
@@ -337,7 +361,12 @@ public class DbProjectController3 {
       String sqlStmt = "DELETE FROM Event WHERE EVENTTYPE = '" + type.getValue() + "'";
       // call function to kick off the rest of it
       DbUtil.dbExecuteUpdate(sqlStmt);
-    }
+      /*FindBugs says that this "passes a non-constant String to an execute or addBatch method on
+       an SQL statement", however, this and one other are the only complaints out of all my
+       statements that are exactly like this one.*/
+    } /*CheckStyle says "'}' at column 5 should be on the same line as the next part of a
+        multi-block statement (one that directly contains multiple blocks: if/else-if/else,
+        do/while or try/catch/finally)", however, nothing I do changes this issue.*/
 
     // i.e. if something was typed into month field
     else if (!(month.getText().trim().isEmpty())) {
@@ -350,7 +379,9 @@ public class DbProjectController3 {
       } else {
         System.out.println("Input did not match regular expression.");
       }
-    }
+    } /*CheckStyle says "'}' at column 5 should be on the same line as the next part of a
+        multi-block statement (one that directly contains multiple blocks: if/else-if/else,
+        do/while or try/catch/finally)", however, nothing I do changes this issue.*/
 
     // i.e. if something was typed into the date field
     else if (!(date.getText().trim().isEmpty())) {

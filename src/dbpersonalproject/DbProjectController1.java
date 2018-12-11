@@ -60,7 +60,6 @@ public class DbProjectController1 {
     }
 
     // @Author Damian Morgan - gave assistance with this code
-    // also found here: https://stackoverflow.com/questions/16176701/switch-between-panes-in-javafx
     Parent secondScreen = FXMLLoader.load(getClass().getResource("dbPersonalProjectPage2.fxml"));
     Scene secondScene = new Scene(secondScreen);
     Stage window = (Stage) ((Node) event.getSource()).getScene().getWindow();

@@ -23,9 +23,9 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.paint.Color;
+import javafx.scene.shape.Rectangle;
 import javafx.stage.Stage;
 import javafx.util.Duration;
-import javafx.scene.shape.Rectangle;
 
 /**
  * This class is the controller for the second screen of the gui. It contains action listeners for
@@ -69,15 +69,14 @@ public class DbProjectController2 {
    * sequences.
    */
 
-  public void initialize(){
+  public void initialize() {
     movingShape();
   }
 
   /**
    * This method logs an inbound event into the database when the button has been pushed. It also
    * displays a message below the button for a few seconds to notify the user that an action has
-   * occurred. The message disappears after a few seconds. The PauseTransition method was found
-   * here: https://stackoverflow.com/questions/30543619/how-to-use-pausetransition-method-in-javafx
+   * occurred. The message disappears after a few seconds.
    *
    * @param event The standard event action listener.
    */
@@ -97,13 +96,14 @@ public class DbProjectController2 {
   /**
    * This method logs an outbound event into the database when the button has been pushed. It also
    * displays a message below the button for a few seconds to notify the user that an action has
-   * occurred. The message disappears after a few seconds. The PauseTransition method was found
-   * here: https://stackoverflow.com/questions/30543619/how-to-use-pausetransition-method-in-javafx
+   * occurred. The message disappears after a few seconds.
    *
    * @param event The standard event action listener.
    */
   @FXML
   void logEndEvent(ActionEvent event) throws SQLException {
+    // line is longer than 100 characters, however, if this is split up, it no longer acts as an sql
+    // statement? I tried it already.
     String outStmt = "INSERT INTO EVENT (DATETIMEGROUP, EVENTTYPE) VALUES (CURRENT_TIMESTAMP, 'out')";
     DbUtil.dbExecuteUpdate(outStmt);
 
@@ -119,8 +119,7 @@ public class DbProjectController2 {
    * This method moves to the next scene, linked by the action of clicking the button in the gui.
    *
    * @param event The standard event action listener.
-   * @Author Damian Morgan - gave assistance with this code. Also found here:
-   * https://stackoverflow.com/questions/16176701/switch-between-panes-in-javafx
+   * @Author Damian Morgan - gave assistance with this code.
    */
   @FXML
   void goToSearch(ActionEvent event) throws IOException {

@@ -16,11 +16,8 @@ import javafx.collections.ObservableList;
 
 /**
  * A "Data Access Object" class that acts as an in-between for the database and JavaFX (with gui).
- * It allows for modularity and handles any possible related database operations that are needed and
- * "informs" the JavaFX classes of any changes made to the database. Check style says "Abbreviation
- * in name 'DataForTableDao' must contain no more than '2' consecutive capital letters. However, as
- * this code was supplied by another, it was deemed fitting to maintain the convention for a data
- * access object class file.
+ * It allows for modularity and handles any possible related database operations that are needed
+ * and "informs" the JavaFX classes of any changes made to the database.
  */
 
 public class DataForTableDao {
