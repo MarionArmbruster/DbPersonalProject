@@ -14,8 +14,7 @@ import javafx.stage.Stage;
 
 /**
  * The beginning of this database project. It contains the start method of JavaFX to set and begin
- * the gui, along with the main method needed by JavaFX. Check style says "Type name 'DbProject'
- * must match pattern '^[A-Z][a-zA-Z0-9]*$'."
+ * the gui, along with the main method needed by JavaFX.
  */
 public class DbProject extends Application {
 

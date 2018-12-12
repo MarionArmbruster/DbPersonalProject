@@ -7,10 +7,6 @@
 package dbpersonalproject;
 
 import java.sql.Timestamp;
-import java.text.DateFormat;
-import java.text.MessageFormat;
-import java.text.SimpleDateFormat;
-import java.util.Date;
 import javafx.beans.property.IntegerProperty;
 import javafx.beans.property.SimpleIntegerProperty;
 import javafx.beans.property.SimpleObjectProperty;
@@ -79,12 +75,6 @@ public class DataForTable {
     this.eventType.set(event);
   }
 
-  /*@Override
-  public String toString() {
-    String fmt = "MM/dd/yyyy HH:mm:ss a";
-    DateFormat df = new SimpleDateFormat(fmt);
-    return
-  }*/
 }
 
 

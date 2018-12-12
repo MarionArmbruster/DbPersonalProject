@@ -31,6 +31,7 @@ public class DbProjectController1 {
 
   static final String DATABASE_URL = "jdbc:derby:lib//libraryproject";
 
+  // for going to the next scene
   @FXML
   private Button connect;
 
