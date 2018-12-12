@@ -33,6 +33,8 @@ transition you to the next scene
   - The "Log off" button in the corner, which is present on all scenes, is used to exit the program, if you don't want to use the
     big red "X"  
   
+-Alternatively, you can go to the DbProject_jar/DbPersonalProject_jar folder, click on the .jar file, and download my program.
+
 # Built With
 DbPersonalProject program was built in the Intellij IDEA integrated development environment. It was made using the Java ver. 1.8.0_181.
 
@@ -74,4 +76,4 @@ exciting to watch it happen. It is something that I am proud of.
 
 # Future Plans
 
-In the future, I plan to add more user-friendly controls to the GUI, such as mouse events and focus controls. I may also add other things to this project, depending on what I come up with.
+In the future, I plan to add more user-friendly controls to the GUI, such as mouse events, focus controls, and/or dialog boxes. I may also add other things to this project, depending on what I come up with.
