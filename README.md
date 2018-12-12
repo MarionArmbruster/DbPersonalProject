@@ -8,7 +8,7 @@ individual assignment for my COP 3003 class during the Fall 2018 semester.
 This program uses the Google Java Style guide and adheres to the GUI Design Principles. There is contrast between the screen elements, groupings are present and not placed wildly, the screen elements and the groups are aligned (especially on the third scene), and the colors and graphics are effective and simple. There is clarity in the visual elements used, the functions of elements, and the words and text that are displayed. There is a consistency with my database program project in that each scene has a similar look, most of the button have simiplar usages, almost all of the button clicks gives the same reactions (given the parameters), and the function and position of the elements do not change. My program maintains control to the user, a directness for the tasks, and is moderately efficient. There is a natural progression of the program that is predictable. The interface is simple and has a degree of uniformity and consistency throughout.
 
 # Demonstration
-// TO DO: Add an animated gif. You can use ShareX, GIPHY Capture or another tool. https://blog.github.com/2018-06-29-GIF-that-keeps-on-GIFing/ Note for school project: This is a great way for friends and family to easily see your project in action.
+![My program running](docs/video.gif) 
 
 # Getting Started
 To run the program, download the package "DbPersonalProject" and open the .java files in an IDE of your choosing. To interact with the
@@ -45,6 +45,7 @@ Resources used:<ul><li>[All about SQL](https://www.w3schools.com/sql/)  </li>
                 <li>[Animation](https://examples.javacodegeeks.com/desktop-java/javafx/javafx-animation-example/)  </li>
                 <li>[More Animation](https://www.youtube.com/watch?v=VicKcKBso6o)  </li>
                 <li>[A Transition](https://stackoverflow.com/questions/30543619/how-to-use-pausetransition-method-in-javafx) </li>
+                <li>[Oracle docs](https://docs.oracle.com/javafx/2/api/javafx/animation/ParallelTransition.html)</li>
                 <li>And many others that may not have gotten on this list.</ul>
                 
 # Author
