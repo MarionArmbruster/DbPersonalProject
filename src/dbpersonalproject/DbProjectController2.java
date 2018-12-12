@@ -102,9 +102,8 @@ public class DbProjectController2 {
    */
   @FXML
   void logEndEvent(ActionEvent event) throws SQLException {
-    // line is longer than 100 characters, however, if this is split up, it no longer acts as an sql
-    // statement? I tried it already.
-    String outStmt = "INSERT INTO EVENT (DATETIMEGROUP, EVENTTYPE) VALUES (CURRENT_TIMESTAMP, 'out')";
+    String outStmt = "INSERT INTO EVENT (DATETIMEGROUP, EVENTTYPE)"
+        + " VALUES (CURRENT_TIMESTAMP, 'out')";
     DbUtil.dbExecuteUpdate(outStmt);
 
     outEvent.setText("   Event out has been logged.");
@@ -133,24 +132,27 @@ public class DbProjectController2 {
   /**
    * For the two rectangle shapes that were created in SceneBuilder, this method creates some
    * animations for them. As they are two different rectangle objects, they each have their own set
-   * of transitions and play method.
+   * of the same transitions and play method so that they appear synchronized on the scene.
    */
   void movingShape() {
+    // begins and ends the rotation on a corner of the rectangle, rather than a flat edge
     rectangle1.setRotate(45);
     rectangle2.setRotate(45);
 
+    // sets the properties of the fill transition for the first rectangle, and then the second
     FillTransition fill = new FillTransition(Duration.seconds(5), rectangle1, Color.RED,
         Color.YELLOW);
-    fill.setCycleCount(4);
+    fill.setCycleCount(Animation.INDEFINITE);
     fill.setAutoReverse(true);
     fill.play();
 
     FillTransition fill2 = new FillTransition(Duration.seconds(5), rectangle2, Color.BLUE,
         Color.ORANGE);
-    fill2.setCycleCount(4);
+    fill2.setCycleCount(Animation.INDEFINITE);
     fill2.setAutoReverse(true);
     fill2.play();
 
+    // sets the properties of the rotate transition for the first rectangle, and then the second
     RotateTransition rotate = new RotateTransition(Duration.seconds(5));
     rotate.setByAngle(180);
     rotate.setCycleCount(Animation.INDEFINITE);
@@ -161,10 +163,13 @@ public class DbProjectController2 {
     rotate2.setCycleCount(Animation.INDEFINITE);
     rotate2.setAutoReverse(true);
 
+    // creates an object of the parallel transition for each rectangle and passes the objects of
+    // the other transition so that they all run in tandem with each other
     ParallelTransition pt1 = new ParallelTransition(rectangle1, fill, rotate);
-    pt1.play();
-
     ParallelTransition pt2 = new ParallelTransition(rectangle2, fill2, rotate2);
+
+    // play the animations
+    pt1.play();
     pt2.play();
   }
 

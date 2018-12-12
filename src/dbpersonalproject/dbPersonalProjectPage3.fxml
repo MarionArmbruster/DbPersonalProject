@@ -73,7 +73,7 @@ The fxml that forms the third scene in the stage. It is a part of the View in th
                   <Insets left="50.0" right="32.0"/>
                 </padding>
               </Label>
-              <TextField fx:id="month">
+              <TextField fx:id="month" promptText="Enter Month as a number.">
                 <HBox.margin>
                   <Insets top="5.0"/>
                 </HBox.margin>
@@ -98,7 +98,7 @@ The fxml that forms the third scene in the stage. It is a part of the View in th
                   <Insets left="50.0" right="50.0"/>
                 </padding>
               </Label>
-              <TextField fx:id="date">
+              <TextField fx:id="date" promptText="Enter Date as a number.">
                 <HBox.margin>
                   <Insets top="6.0"/>
                 </HBox.margin>

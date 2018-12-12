@@ -80,12 +80,12 @@ public class DbUtil {
       dbConnect();
       System.out.println("Select statement: " + queryStmt + "\n");
 
-      /* create a statement
-       * FindBugs says "Method may fail to clean up stream or resource on checked exception."
-       * This resource will close after the operation is finished, by calling the disconnect
-       * method.*/
+      // create a statement
+      /* FindBugs says "Method may fail to clean up stream or resource on checked exception."
+       * This resource will be closed after the operation is finished, during the execution of
+       * the finally block. A try-with-resources ends with an error of "Resource references are not
+       * supported at language level '8'" It also causes a few other errors.*/
       stmt = connection.createStatement();
-
       // execute the selected (query) operation that was passed in
       resultSet = stmt.executeQuery(queryStmt);
 

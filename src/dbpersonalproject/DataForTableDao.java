@@ -2,9 +2,6 @@
  * File: DataForTableDao.java
  * Author: Marion Armbruster
  * Date: 17 November 2018
- *
- * Modified code snippets from ONUR BASKIRT.
- * https://www.swtestacademy.com/database-operations-javafx/
  ****************************************************/
 
 package dbpersonalproject;
@@ -17,7 +14,8 @@ import javafx.collections.ObservableList;
 /**
  * A "Data Access Object" class that acts as an in-between for the database and JavaFX (with gui).
  * It allows for modularity and handles any possible related database operations that are needed
- * and "informs" the JavaFX classes of any changes made to the database.
+ * and "informs" the JavaFX classes of any changes made to the database. Modified code snippets
+ * from ONUR BASKIRT. https://www.swtestacademy.com/database-operations-javafx/
  */
 
 public class DataForTableDao {

@@ -33,15 +33,13 @@ import javafx.stage.Stage;
  * method that leads back to the second screen of the gui should the user wish to add more events to
  * the database.
  */
+
 public class DbProjectController3 {
 
   // A regular expression patter and match for both the date and the month as insurance that data
   // the user typed in is appropriate
-
-  // CheckStyle says that the "Member name 'pMonth' and 'pDate' must match the pattern", however,
-  // this is a variable name, not something to be matched.
-  private Pattern pMonth = Pattern.compile("(^[1-9]|1[0-2]$)");
-  private Pattern pDate = Pattern.compile("(^[1-9]|12[0-9]|3[0-1]$)");
+  private Pattern patternMonth = Pattern.compile("(^[1-9]|1[0-2]$)");
+  private Pattern patternDate = Pattern.compile("(^[1-9]|1[0-9]|2[0-9]|3[0-1]$)");
 
   private Matcher isMatchMonth;
   private Matcher isMatchDate;
@@ -152,78 +150,56 @@ public class DbProjectController3 {
    */
   @FXML
   private void updateTableView(ActionEvent event) throws SQLException {
-    isMatchMonth = pMonth.matcher(month.getText());
-    isMatchDate = pDate.matcher(date.getText());
+    isMatchMonth = patternMonth.matcher(month.getText());
+    isMatchDate = patternDate.matcher(date.getText());
 
     // if month AND date are not empty; i.e something was typed into both fields
     if (!(month.getText().trim().isEmpty()) && !(date.getText().trim().isEmpty())) {
       // if both fields match their regex format
       if (isMatchMonth.matches() && isMatchDate.matches()) {
         // declares an sql SELECT statement using the values from the two text fields
-        /*CheckStyle says that the "Member name 'mAndDStmt' must match the pattern", however, this
-          is a variable name, not something to be matched.*/
-        String mAndDStmt = "SELECT * FROM Event WHERE MONTH(DATETIMEGROUP) = " + month.getText()
+        String monthAndDate = "SELECT * FROM Event WHERE MONTH(DATETIMEGROUP) = " + month.getText()
             + " AND DAY(DATETIMEGROUP) = " + date.getText();
         // call function to kick off the rest of it
-        databaseToTable(mAndDStmt);
+        databaseToTable(monthAndDate);
       } else {
-        System.out.println("Input did not match regular expression.");
+        System.out.println("Input did not match regular expression for month or date.");
       }
-    } /*CheckStyle says "'}' at column 5 should be on the same line as the next part of a
-        multi-block statement (one that directly contains multiple blocks: if/else-if/else,
-        do/while or try/catch/finally)", however, nothing I do changes this issue.*/
-
-    // if month AND combo-box are not empty; i.e something was typed into both fields
-    else if (!(month.getText().trim().isEmpty()) && type.getValue() != null) {
+    } else if (!(month.getText().trim().isEmpty()) && type.getValue() != null) {
+      // if month AND combo-box are not empty; i.e something was typed into both fields
       // if month matches its regex format; combo-box was already checked
       if (isMatchMonth.matches()) {
         // declares an sql SELECT statement using the values from the two text fields
-        /*CheckStyle says that the "Member name 'mAndCStmt' must match the pattern", however, this
-          is a variable name, not something to be matched.*/
-        String mAndCStmt = "SELECT * FROM Event WHERE MONTH(DATETIMEGROUP) = " + month.getText()
+        String monthAndBox = "SELECT * FROM Event WHERE MONTH(DATETIMEGROUP) = " + month.getText()
             + " AND EVENTTYPE = '" + type.getValue() + "'";
         // call function to kick off the rest of it
-        databaseToTable(mAndCStmt);
+        databaseToTable(monthAndBox);
       } else {
-        System.out.println("Input did not match regular expression.");
+        System.out.println("Input did not match regular expression for month or type.");
       }
-    } /*CheckStyle says "'}' at column 5 should be on the same line as the next part of a
-        multi-block statement (one that directly contains multiple blocks: if/else-if/else,
-        do/while or try/catch/finally)", however, nothing I do changes this issue.*/
-
-    // if date AND combo-box are not empty; i.e something was typed into both fields
-    else if (!(date.getText().trim().isEmpty()) && type.getValue() != null) {
+    } else if (!(date.getText().trim().isEmpty()) && type.getValue() != null) {
+      // if date AND combo-box are not empty; i.e something was typed into both fields
       // if date matches its regex format; combo-box was already checked
       if (isMatchDate.matches()) {
         // declares an sql SELECT statement using the values from the two text fields
-        /*CheckStyle says that the "Member name 'mAndDStmt' must match the pattern", however, this
-        is a variable name, not something to be matched.*/
-        String dAndCStmt = "SELECT * FROM Event WHERE DAY(DATETIMEGROUP) = " + date.getText()
+        String dateAndBox = "SELECT * FROM Event WHERE DAY(DATETIMEGROUP) = " + date.getText()
             + " AND EVENTTYPE = '" + type.getValue() + "'";
         // call function to kick off the rest of it
-        databaseToTable(dAndCStmt);
+        databaseToTable(dateAndBox);
       } else {
-        System.out.println("Input did not match regular expression.");
+        System.out.println("Input did not match regular expression date or type.");
       }
-    } /*CheckStyle says "'}' at column 5 should be on the same line as the next part of a
-        multi-block statement (one that directly contains multiple blocks: if/else-if/else,
-        do/while or try/catch/finally)", however, nothing I do changes this issue.*/
-
-    // i.e. if something was selected from combo-box
-    else if (type.getValue() != null) {
+    } else if (type.getValue() != null) {
+      // i.e. if something was selected from combo-box
       // declares an sql SELECT statement using the value from the combo-box
       String sqlStmt = "SELECT * FROM Event WHERE EVENTTYPE = '" + type.getValue() + "'";
       // call function to kick off the rest of it
       databaseToTable(sqlStmt);
-      /*FindBugs says that this "passes a non-constant String to an execute or addBatch method on
+      /**FindBugs says that this "passes a non-constant String to an execute or addBatch method on
        an SQL statement", however, this and one other are the only complaints out of all my
        statements that are exactly like this one.*/
-    } /*CheckStyle says "'}' at column 5 should be on the same line as the next part of a
-        multi-block statement (one that directly contains multiple blocks: if/else-if/else,
-        do/while or try/catch/finally)", however, nothing I do changes this issue.*/
-
-    // i.e. if something was typed into month field
-    else if (!(month.getText().trim().isEmpty())) {
+    } else if (!(month.getText().trim().isEmpty())) {
+      // i.e. if something was typed into month field
       // if month matches its regex format
       if (isMatchMonth.matches()) {
         // declares an sql SELECT statement using the value from the month text field
@@ -231,14 +207,10 @@ public class DbProjectController3 {
         // call function to kick off the rest of it
         databaseToTable(monthStmt);
       } else {
-        System.out.println("Input did not match regular expression.");
+        System.out.println("Input did not match regular expression for month.");
       }
-    } /*CheckStyle says "'}' at column 5 should be on the same line as the next part of a
-        multi-block statement (one that directly contains multiple blocks: if/else-if/else,
-        do/while or try/catch/finally)", however, nothing I do changes this issue.*/
-
-    // i.e. if something was typed into the date field
-    else if (!(date.getText().trim().isEmpty())) {
+    } else if (!(date.getText().trim().isEmpty())) {
+      // i.e. if something was typed into the date field
       // if date matches its regex format
       if (isMatchDate.matches()) {
         // declares an sql SELECT statement using the value from the date text field
@@ -246,7 +218,7 @@ public class DbProjectController3 {
         // call function to kick off the rest of it
         databaseToTable(dateStmt);
       } else {
-        System.out.println("Input did not match regular expression.");
+        System.out.println("Input did not match regular expression for date.");
       }
     }
 
@@ -264,8 +236,8 @@ public class DbProjectController3 {
    * @param string The sql statement that had been created locally in the method that called
    *               databaseToTable. This string will vary dependent upon what is being done with
    *               the database.
-   * @throws SQLException General exception in the event that data was not able to be retrieved
-   *                      from the database.
+   * @throws SQLException General exception in the event that data was not able to be retrieved from
+   *                      the database.
    */
   @FXML
   private void databaseToTable(String string) throws SQLException {
@@ -304,8 +276,8 @@ public class DbProjectController3 {
    */
   @FXML
   void deleteRecord(ActionEvent event) throws SQLException {
-    isMatchMonth = pMonth.matcher(month.getText());
-    isMatchDate = pDate.matcher(date.getText());
+    isMatchMonth = patternMonth.matcher(month.getText());
+    isMatchDate = patternDate.matcher(date.getText());
 
     // if month AND date are not empty; i.e something was typed into both fields
     if (!(month.getText().trim().isEmpty()) && !(date.getText().trim().isEmpty())) {
@@ -316,15 +288,13 @@ public class DbProjectController3 {
             + " AND DAY(DATETIMEGROUP) = " + date.getText();
         // call function to kick off the rest of it
         DbUtil.dbExecuteUpdate(deleteMoDa);
+        System.out.println("DELETE FROM Event WHERE MONTH(DATETIMEGROUP) = " + month.getText()
+             +  " AND DAY(DATETIMEGROUP) = " + date.getText());
       } else {
-        System.out.println("Input did not match regular expression.");
+        System.out.println("Input did not match regular expression for month or date.");
       }
-    } /*CheckStyle says "'}' at column 5 should be on the same line as the next part of a
-        multi-block statement (one that directly contains multiple blocks: if/else-if/else,
-        do/while or try/catch/finally)", however, nothing I do changes this issue.*/
-
-    // if month AND combo-box are not empty; i.e something was typed into both fields
-    else if (!(month.getText().trim().isEmpty()) && type.getValue() != null) {
+    } else if (!(month.getText().trim().isEmpty()) && type.getValue() != null) {
+      // if month AND combo-box are not empty; i.e something was typed into both fields
       // if month matches its regex format; combo-box was already checked
       if (isMatchMonth.matches()) {
         // declares an sql DELETE statement using the values from the two text fields
@@ -332,15 +302,13 @@ public class DbProjectController3 {
             + " AND EVENTTYPE = '" + type.getValue() + "'";
         // call function to kick off the rest of it
         DbUtil.dbExecuteUpdate(deleteMoCb);
+        System.out.println("DELETE FROM Event WHERE MONTH(DATETIMEGROUP) = " + month.getText()
+            +  " AND EVENTTYPE = '" + date.getText() + "'");
       } else {
-        System.out.println("Input did not match regular expression.");
+        System.out.println("Input did not match regular expression for month or type.");
       }
-    } /*CheckStyle says "'}' at column 5 should be on the same line as the next part of a
-        multi-block statement (one that directly contains multiple blocks: if/else-if/else,
-        do/while or try/catch/finally)", however, nothing I do changes this issue.*/
-
-    // if date AND combo-box are not empty; i.e something was typed into both fields
-    else if (!(date.getText().trim().isEmpty()) && type.getValue() != null) {
+    } else if (!(date.getText().trim().isEmpty()) && type.getValue() != null) {
+      // if date AND combo-box are not empty; i.e something was typed into both fields
       // if date matches its regex format; combo-box was already checked
       if (isMatchDate.matches()) {
         // declares an sql DELETE statement using the values from the two text fields
@@ -348,51 +316,44 @@ public class DbProjectController3 {
             + " AND EVENTTYPE = '" + type.getValue() + "'";
         // call function to kick off the rest of it
         DbUtil.dbExecuteUpdate(deleteDaCb);
+        System.out.println("DELETE FROM Event WHERE DAY(DATETIMEGROUP) = " + date.getText()
+            +  " AND EVENTTYPE = '" + type.getValue() + "'");
       } else {
-        System.out.println("Input did not match regular expression.");
+        System.out.println("Input did not match regular expression for date or month.");
       }
-    } /*CheckStyle says "'}' at column 5 should be on the same line as the next part of a
-        multi-block statement (one that directly contains multiple blocks: if/else-if/else,
-        do/while or try/catch/finally)", however, nothing I do changes this issue.*/
-
-    // i.e. if something was selected from combo-box
-    else if (type.getValue() != null) {
+    } else if (type.getValue() != null) {
+      // i.e. if something was selected from combo-box
       // declares an sql DELETE statement using the value from the combo-box
       String sqlStmt = "DELETE FROM Event WHERE EVENTTYPE = '" + type.getValue() + "'";
       // call function to kick off the rest of it
       DbUtil.dbExecuteUpdate(sqlStmt);
-      /*FindBugs says that this "passes a non-constant String to an execute or addBatch method on
+      /**FindBugs says that this "passes a non-constant String to an execute or addBatch method on
        an SQL statement", however, this and one other are the only complaints out of all my
        statements that are exactly like this one.*/
-    } /*CheckStyle says "'}' at column 5 should be on the same line as the next part of a
-        multi-block statement (one that directly contains multiple blocks: if/else-if/else,
-        do/while or try/catch/finally)", however, nothing I do changes this issue.*/
-
-    // i.e. if something was typed into month field
-    else if (!(month.getText().trim().isEmpty())) {
+      System.out.println("DELETE FROM Event WHERE EVENTTYPE = '" + type.getValue() + "'");
+    } else if (!(month.getText().trim().isEmpty())) {
+      // i.e. if something was typed into month field
       // if month matches its regex format
       if (isMatchMonth.matches()) {
         // declares an sql DELETE statement using the value from the month text field
         String deleteMonth = "DELETE FROM Event WHERE MONTH(DATETIMEGROUP) = " + month.getText();
         // call function to kick off the rest of it
         DbUtil.dbExecuteUpdate(deleteMonth);
+        System.out.println("DELETE FROM Event WHERE MONTH(DATETIMEGROUP) = " + month.getText());
       } else {
-        System.out.println("Input did not match regular expression.");
+        System.out.println("Input did not match regular expression for month.");
       }
-    } /*CheckStyle says "'}' at column 5 should be on the same line as the next part of a
-        multi-block statement (one that directly contains multiple blocks: if/else-if/else,
-        do/while or try/catch/finally)", however, nothing I do changes this issue.*/
-
-    // i.e. if something was typed into the date field
-    else if (!(date.getText().trim().isEmpty())) {
+    } else if (!(date.getText().trim().isEmpty())) {
+      // i.e. if something was typed into the date field
       // if date matches its regex format
       if (isMatchDate.matches()) {
         // declares an sql DELETE statement using the value from the date text field
         String deleteDate = "DELETE FROM Event WHERE DAY(DATETIMEGROUP) = " + date.getText();
         // call function to kick off the rest of it
         DbUtil.dbExecuteUpdate(deleteDate);
+        System.out.println("DELETE FROM Event WHERE DAY(DATETIMEGROUP) = " + date.getText());
       } else {
-        System.out.println("Input did not match regular expression.");
+        System.out.println("Input did not match regular expression for date.");
       }
     }
 
