@@ -70,4 +70,8 @@ can utilize a Model-view-controller (MVC) design principle and design where the 
 file) and the control (controller file) of the program.
 
 JavaFX is much easier to use than Java Swing for some cases. And for this project, it was much easier than in Swing, as well as being
-exciting to watch it happen and become something that I am proud of.
+exciting to watch it happen. It is something that I am proud of.
+
+# Future Plans
+
+In the future, I plan to add more user-friendly controls to the GUI, such as mouse events and focus controls. I may also add other things to this project, depending on what I come up with.
