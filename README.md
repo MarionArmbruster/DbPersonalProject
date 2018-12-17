@@ -23,8 +23,8 @@ transition you to the next scene
    - You can also enjoy the short animation displayed on the screen
    - Clicking the "Search" button will transition to the third and final scene
 
--On the third scene is a "Go back" button so that you can log more events if you wish, as well as several other button and fields.
-  - The Month, and Date fields allow you to type into the field to seach the database, or alternatively, you can also use the Type
+-On the third scene is a "Go back" button so that you can log more events if you wish, as well as several other buttons and fields.
+  - The Month and Date fields allow you to type into the field to seach the database, or alternatively, you can also use the Type
     drop-down field as a search term
   - The "Show-All" button will display anything and everything that is currently in the database, including the new events you may 
     have just added
@@ -66,10 +66,7 @@ shenanigans introduced by both githib and IntelliJ.
 
 # Key Programming Concepts Utilized
 
-Key concepts: JavaFX: always has a start method to initialize the first stage and the scene within it, and a Main that launches it. Uses
-Controllers and fxml files for the bulk of the program and can use css to separate the style and looks from the rest of the scene. JavaFX
-can utilize a Model-view-controller (MVC) design principle and design where the model of the program is spearate from both the view (fxml
-file) and the control (controller file) of the program.
+Key concepts: JavaFX always has a start method to initialize the first stage and the scene within it, and a Main that launches it. It uses Controllers and fxml files for the bulk of the program and can use css to separate the style and looks from the rest of the scene. JavaFX can utilize a Model-View-Controller (MVC) design principle which is where the design of the model of the program is separate from both the view (fxml file) and the control (controller file) of the program.
 
 JavaFX is much easier to use than Java Swing for some cases. And for this project, it was much easier than in Swing, as well as being
 exciting to watch it happen. It is something that I am proud of.
